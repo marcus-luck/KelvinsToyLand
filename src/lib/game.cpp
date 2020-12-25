@@ -3,6 +3,10 @@
 // #include "ball.hpp"
 #include "game.hpp"
 
+struct MouseEvent
+{
+
+}
 
 Game::Game() :
 _renderWindow(sf::VideoMode(1024, 768, 32), "Kelvins Toysland")
@@ -11,7 +15,7 @@ _renderWindow(sf::VideoMode(1024, 768, 32), "Kelvins Toysland")
 	m_TimePerFrame = sf::seconds(1.f / 60.f);
 	m_ball1 = new Ball();
 	m_ball2 = new Ball();
-	m_ball2->shape.setPosition(200.0, 200.0);
+	m_ball2->move(1, 200.0, 200.0);
 	// std::vector<Ball> m_Entities;
 	// Ball ball1;
 	m_Entities.push_back(m_ball1);
@@ -130,6 +134,10 @@ void Game::handleEvent(sf::Event event)
 		}
 		case sf::Event::MouseButtonPressed:
 		{
+			auto mouse_position_x = event.mouseButton.x;
+            auto mouse_position_y = event.mouseButton.y;
+			
+			           
 			break;	
 		}
 			// Fun stuff!
