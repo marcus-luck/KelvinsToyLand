@@ -1,13 +1,19 @@
 #ifndef BALL_HPP
 #define BALL_HPP
 
-#include "SFML/Graphics.hpp"
+#include <memory>
+#include "Entity.h"
 
 class Ball :
+    public Entity,
 	public sf::Drawable
 {
     public:
-        sf::CircleShape shape;
+        std::unique_ptr<sf::CircleShape> shape;
+
+    private:
+        bool m_selected;
+        sf::Vector2f movementSpeed;
 
     public:
         Ball();
@@ -20,8 +26,11 @@ class Ball :
         int m_Mass;
 
     public:
+        void update(const float& dt);
+        // void render(sf::RenderTarget& _rw);
         void draw(sf::RenderTarget& _rw, sf::RenderStates states) const;
-
+        void setdir(float dirX, float dirY);
+        void move(const float& dt, float dirX, float dirY);
 };
 
 #endif
